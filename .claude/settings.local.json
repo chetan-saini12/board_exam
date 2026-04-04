@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:\\\\Users\\\\cs751\\\\Desktop\\\\PassBoards\\\\pass_board_exam\\\\app\\\\api\\\\agents\\\\[id]\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\cs751\\\\Desktop\\\\PassBoards\\\\pass_board_exam\\\\app\\\\api\\\\tickets\\\\[id]\")",
+      "Bash(npx prisma:*)",
+      "Bash(find C:Userscs751DesktopPassBoardspass_board_examnode_modules@prismaclientruntime -name *.d.ts)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

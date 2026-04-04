@@ -1,0 +1,126 @@
+new staging db issue
+
+opensearch add on old sever
+
+
+Language user id changes
+
+Progress module changes
+
+......................................
+
+
+create web application called passboardexams.in
+
+contain two page when open website
+
+navbar - contact us, share ur experience , steps (scroll down to second page) 
+
+landing page -
+first page - contain image student struggling in exam with pass me button 
+
+second page (scroll down) - show steps  and user experience(add dummy cards for now).
+steps 1 - click contact us 
+step 2 - fill form
+step 3 - team will verify your document
+step 4 - team will contact you and give you details for exam. 
+step 5 - attend exam (special care and assistance during exam)
+step 6 - Pay remaining fees and collect DMC. 
+
+contact us and pass me button ---redirect to form page---->
+
+form page
+
+name
+contact number
+board - example CBSE 
+upload Result
+Priority toogle button on toogle show dummy image for now 
+priority team will contact same day
+not priority migth take time more than or equal to 2 days
+Send details button
+
+
+//.........................................
+
+
+make use of prisma with postgres and create module
+
+model ticket - 
+id
+name
+agent_id: agent_model 
+address
+ticket_type - online, offline
+status - open(default) , on_going, resolved, not_interested,
+contact_number:string
+board:string
+exam_detail:string
+user_call_comments:string 
+document_url:string 
+priority:boolean
+commission_money:number
+commission_received:number
+master_commission_pending:number
+created_at:date
+updated_at:date
+
+
+model agent -
+id
+name
+contact_number
+total_commission
+first_commission
+second_commission
+
+// create api
+
+//agents
+//1. upsert agent details patch api
+//2. fetch list of agents
+//3. delete an agent
+
+//tickets
+//get list of tickets, order by - priority with status(open ,  on_going), created_at  
+//get ticket by id
+//create ticket. post method
+//update ticket. Patch method
+
+//.............................. Admin
+
+1. Login
+
+create login route accept username and password
+create api route to /api/auth/login generate jwt token if user authenticate and send that in as http-only cookie. //validate user from craete an array of {username,password}
+create common api calling with axios library if any api return unauthorized status redirect to login page and from now on only make api call with that and update if any exist 
+
+2. Admin
+
+create /admin route fetch list of ticket and display
+guard this route if token present in cookie otherwise unauth
+
+
+//........
+
+admin page sidebar
+
+tickets
+agents
+
+//ticket row view details button. 
+//on ticket detail page show all ticket details and give one edit button on click of that we will convert details into input fields.
+
+1. think add new filter on /admin page to filter based on status and (priority is true and ticket status is not resolved or not_interested)
+2. status in filter list - All, priority and ...remaining status.    
+3. make get api route for tickets this filter compatible
+4. add pagination for get all tickets
+
+....................................
+
+#think and create api routes for  
+get list of agents
+post agent create agent
+patch agent details
+
+#create UI for /admin/agents to add new agent show list of agents and update their details.

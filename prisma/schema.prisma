@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TicketType {
+  online
+  offline
+}
+
+enum TicketStatus {
+  open
+  on_going
+  resolved
+  not_interested
+}
+
+model Ticket {
+  id                       String       @id @default(cuid())
+  name                     String
+  address                  String
+  ticket_type              TicketType
+  status                   TicketStatus @default(open)
+  contact_number           String
+  board                    String
+  exam_detail              String?
+  user_call_comments       String?
+  document_url             String?
+  payment_screenshot_url   String?
+  priority                 Boolean      @default(false)
+  commission_money         Float        @default(0)
+  commission_received      Float        @default(0)
+  master_commission_pending Float       @default(0)
+  created_at               DateTime     @default(now())
+  updated_at               DateTime     @updatedAt
+
+  agent_id                 String?
+  agent                    Agent?       @relation(fields: [agent_id], references: [id])
+}
+
+model Agent {
+  id                String   @id @default(cuid())
+  name              String
+  contact_number    String
+  total_commission  Float    @default(0)
+  first_commission  Float    @default(0)
+  second_commission Float    @default(0)
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  tickets           Ticket[]
+}
