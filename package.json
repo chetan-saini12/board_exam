@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "migration-build": "prisma generate && prisma migrate deploy && next build"
+    "migration-build": "prisma generate && next build"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.6.0",
