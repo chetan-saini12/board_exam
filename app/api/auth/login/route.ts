@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
-const USERS = [{ username: "admin", password: "admin123" }];
+const USERS = [{ username: "aryan", password: "aryan@123" }];
 
 // POST /api/auth/login
 export async function POST(req: NextRequest) {
