@@ -5,11 +5,25 @@ import { IncomingMessage, ServerResponse } from "http";
 import { NextRequest } from "next/server";
 import { mkdirSync } from "fs";
 
-const uploadDir = path.join(process.cwd(), "public", "user_documents");
-mkdirSync(uploadDir, { recursive: true });
+// In serverless environments (e.g. Vercel), process.cwd() is read-only (/var/task).
+// Fall back to /tmp which is always writable.
+function getUploadDir(): string {
+  const preferred = path.join(process.cwd(), "public", "user_documents");
+  try {
+    mkdirSync(preferred, { recursive: true });
+    return preferred;
+  } catch {
+    const fallback = path.join("/tmp", "user_documents");
+    mkdirSync(fallback, { recursive: true });
+    return fallback;
+  }
+}
 
 const storage: StorageEngine = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, uploadDir),
+  destination: (_req, _file, cb) => {
+    const uploadDir = getUploadDir();
+    cb(null, uploadDir);
+  },
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname);
     cb(null, `${Date.now()}_${Math.random().toString(36).slice(2)}${ext}`);
