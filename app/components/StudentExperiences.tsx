@@ -17,7 +17,7 @@ const reviews = [
   {
     name: "Sneha T.",
     board: "Maharashtra Board",
-    text: "Quick response and excellent assistance during the exam. Got my DMC within a week. Thank you!",
+    text: "Quick response and excellent assistance during the exam. Got my DMC within a month. Thank you!",
   },
 ];
 

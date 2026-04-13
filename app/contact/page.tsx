@@ -47,13 +47,21 @@ export default function ContactPage() {
     const board =
       selectedBoard === "other" ? customBoard.trim() : selectedBoard;
 
-    if (!form.name || !form.contact_number || !form.address || !board || !file) {
+    if (
+      !form.name ||
+      !form.contact_number ||
+      !form.address ||
+      !board ||
+      !file
+    ) {
       setError("All fields are required.");
       return;
     }
 
     if (priority && !paymentScreenshot) {
-      setError("Please upload your payment screenshot for priority processing.");
+      setError(
+        "Please upload your payment screenshot for priority processing.",
+      );
       return;
     }
 
@@ -254,7 +262,7 @@ export default function ContactPage() {
                   <div className="text-xs text-gray-400 mt-0.5">
                     {priority
                       ? "Team will contact you the same day"
-                      : "May take 2+ days to process"}
+                      : "Without Priority May take 2+ days to process"}
                   </div>
                 </div>
                 <button
@@ -289,7 +297,7 @@ export default function ContactPage() {
                     onClick={() => setShowPayModal(true)}
                     className="mt-1 px-5 py-2 bg-green-500 text-white text-sm font-bold rounded-full shadow hover:bg-green-600 active:scale-95 transition-all"
                   >
-                    Pay ₹200
+                    Pay ₹199
                   </button>
                 </div>
               )}

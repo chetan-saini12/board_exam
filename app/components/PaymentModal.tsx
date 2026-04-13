@@ -29,14 +29,21 @@ export default function PaymentModal({ onClose, onConfirm }: Props) {
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors"
           aria-label="Close"
         >
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
             <line x1="4" y1="4" x2="16" y2="16" />
             <line x1="16" y1="4" x2="4" y2="16" />
           </svg>
         </button>
 
         <div className="text-center">
-          <div className="text-2xl font-extrabold text-gray-900">Pay ₹200</div>
+          <div className="text-2xl font-extrabold text-gray-900">Pay ₹199</div>
           <p className="text-sm text-gray-400 mt-1">
             Scan the QR code below to complete your priority payment
           </p>
@@ -45,16 +52,25 @@ export default function PaymentModal({ onClose, onConfirm }: Props) {
         {/* QR Code */}
         <div className="w-52 h-52 rounded-2xl border-2 border-gray-100 overflow-hidden flex items-center justify-center bg-gray-50">
           <img
-            src="/payment-qr.png"
+            src="/payment_aryan_scanner.jpg"
             alt="Payment QR Code"
             className="w-full h-full object-contain"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = "none";
-              (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
+              (
+                e.target as HTMLImageElement
+              ).nextElementSibling?.classList.remove("hidden");
             }}
           />
           <div className="hidden flex-col items-center gap-2 text-gray-300">
-            <svg width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg
+              width="48"
+              height="48"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+            >
               <rect x="3" y="3" width="7" height="7" rx="1" />
               <rect x="14" y="3" width="7" height="7" rx="1" />
               <rect x="3" y="14" width="7" height="7" rx="1" />
@@ -69,8 +85,10 @@ export default function PaymentModal({ onClose, onConfirm }: Props) {
 
         <div className="w-full bg-blue-50 rounded-2xl px-4 py-3 flex flex-col gap-1 text-center">
           <span className="text-xs text-gray-400 font-medium">Amount</span>
-          <span className="text-2xl font-extrabold text-blue-700">₹200</span>
-          <span className="text-xs text-gray-400">One-time priority processing fee</span>
+          <span className="text-2xl font-extrabold text-blue-700">₹199</span>
+          <span className="text-xs text-gray-400">
+            One-time priority processing fee
+          </span>
         </div>
 
         {/* Screenshot Upload */}
